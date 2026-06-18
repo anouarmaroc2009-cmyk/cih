@@ -3,15 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply leading-relaxed;
-  }
-  h1, h2, h3, h4 {
-    @apply font-display;
-  }
+  html { scroll-behavior: smooth; }
+  body { @apply leading-relaxed; }
+  h1, h2, h3, h4 { @apply font-display; }
 }
 
 @layer components {
@@ -21,4 +15,42 @@
   .glass-panel {
     @apply backdrop-blur-xl bg-white/10 gold-border shadow-xl;
   }
+  .mesh-gradient {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(15, 31, 61, 0.6) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(22, 45, 92, 0.4) 0%, transparent 50%),
+      linear-gradient(135deg, #0a1628 0%, #0f1f3d 50%, #162d5c 100%);
+  }
+  .gold-line {
+    @apply h-px w-16 bg-gold-500/60;
+  }
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 8s ease-in-out 2s infinite;
+  }
+  .animate-float-slow {
+    animation: float 10s ease-in-out 4s infinite;
+  }
+  .animate-scroll-indicator {
+    animation: scrollIndicator 2s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.03); }
+}
+
+@keyframes scrollIndicator {
+  0%, 100% { opacity: 0; transform: translateY(-8px); }
+  50% { opacity: 1; transform: translateY(8px); }
 }
